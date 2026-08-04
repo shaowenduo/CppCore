@@ -1,0 +1,15 @@
+# Build directory
+build/
+
+# Executables
+*.exe
+
+# Object files
+*.o
+*.obj
+
+# Visual Studio Code
+.vscode/
+
+# macOS
+.DS_Store
