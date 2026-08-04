@@ -1,0 +1,3 @@
+D:/Projects/CppCore/build/CMakeFiles/CppCore.dir
+D:/Projects/CppCore/build/CMakeFiles/edit_cache.dir
+D:/Projects/CppCore/build/CMakeFiles/rebuild_cache.dir
