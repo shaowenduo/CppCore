@@ -54,11 +54,3 @@ ThreadPool::~ThreadPool(){
 
 }
 
-void ThreadPool::enqueue(std::function<void()> task){
-    {
-        std::lock_guard<std::mutex> lock(mx);
-        tasks.emplace(std::move(task));
-    }
-    
-    cv.notify_one();
-}

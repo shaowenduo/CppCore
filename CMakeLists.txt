@@ -6,3 +6,7 @@ add_executable(CppCore
     src/ThreadPool.cpp
     examples/main.cpp
 )
+add_executable(ThreadPoolTest
+    src/ThreadPool.cpp
+    tests/ThreadPool_test.cpp
+)
