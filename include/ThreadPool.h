@@ -6,6 +6,7 @@
 #include<condition_variable>
 #include<functional>
 #include<future>
+#include <stdexcept>
 class ThreadPool{
 public:
     ThreadPool(size_t threadCount);
@@ -24,6 +25,11 @@ public:
         };
         {
             std::lock_guard<std::mutex> lock(mx);
+
+        if (stop) {
+            throw std::runtime_error("ThreadPool is stopped");
+        }
+
             tasks.emplace(std::move(wrapper));
         }
         cv.notify_one();
