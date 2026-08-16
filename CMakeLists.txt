@@ -10,3 +10,6 @@ add_executable(ThreadPoolTest
     src/ThreadPool.cpp
     tests/ThreadPool_test.cpp
 )
+add_executable(LRUTest
+    tests/LRU_test.cpp
+)
