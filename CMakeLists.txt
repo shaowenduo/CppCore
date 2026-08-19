@@ -5,11 +5,17 @@ include_directories(include)
 add_executable(CppCore
     src/ThreadPool.cpp
     examples/main.cpp
+    src/Logger.cpp
 )
 add_executable(ThreadPoolTest
     src/ThreadPool.cpp
     tests/ThreadPool_test.cpp
+    src/Logger.cpp
 )
 add_executable(LRUTest
     tests/LRU_test.cpp
+)
+add_executable(LoggerTest
+    src/Logger.cpp
+    tests/Logger_test.cpp
 )

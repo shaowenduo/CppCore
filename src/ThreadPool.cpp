@@ -1,12 +1,14 @@
 #include "ThreadPool.h"
+#include "Logger.h"
 #include<chrono>
 #include<iostream>
 ThreadPool::ThreadPool(size_t threadCount):stop(false)
 {
     workers.reserve(threadCount);
+    Logger::info("ThreadPool started");
     for(size_t i=0;i<threadCount;i++){
         workers.emplace_back([this] {
-
+        Logger::info("worker started");
         while (true) {
 
             std::unique_lock<std::mutex> lock(mx);
@@ -34,7 +36,9 @@ ThreadPool::ThreadPool(size_t threadCount):stop(false)
             // 解锁
             lock.unlock();
             // 执行任务
+            Logger::info("task start");
             task();
+            Logger::info("task finished");
         }
         });
     }
@@ -42,11 +46,12 @@ ThreadPool::ThreadPool(size_t threadCount):stop(false)
 }
 
 ThreadPool::~ThreadPool(){
+    Logger::info("ThreadPool started");
     {
         std::lock_guard<std::mutex> lock(mx);
         stop=true;
     }
-    
+    Logger::info("ThreadPool stopped");
     cv.notify_all();
     for(auto& worker:workers){
         worker.join();
